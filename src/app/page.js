@@ -93,12 +93,12 @@ export default function Home() {
         )}
         {tabName === "design" && (
           <div className="flex items-center justify-between w-full h-full">
-            <div className="w-[49%] flex flex-col bg-white p-5 h-full rounded-xl shadow-xl space-y-3">
+            <div className="w-[49%] flex flex-col bg-white p-5 h-full rounded-xl shadow-xl justify-between space-y-3">
               <span className="text-[21px] font-medium ">
                 Choose your style
               </span>
               <div className="flex w-full p-3 bg-gray-100 rounded-xl">
-                <div className="w-[50px] h-[50px] rounded-full border-4 border-white flex justify-center items-center">
+                <div className="w-[50px] h-[50px] rounded-full border-2 border-white flex justify-center items-center">
                   <AddCircleOutline />
                 </div>
               </div>
@@ -112,7 +112,6 @@ export default function Home() {
                   <span className="text-gray-400"> HEX</span>
                 </div>
                 <div className="w-[65%] flex items-center text-[13px] justify-evenly p-3 h-full rounded-xl bg-gray-100">
-                  {/* <input type="color" className="w-full" /> */}
                   <HuePicker color={color} onChange={(e) => setColor(e.hex)} />
                 </div>
               </div>
@@ -125,6 +124,11 @@ export default function Home() {
                   <span>Display Personal Name</span>
                   <input type="checkbox" />
                 </div>
+              </div>
+              <div className="flex items-center justify-between max-w-full overflow-hidden">
+                <img src="/form.png" className="w-[30%]" />
+                <img src="/form.png" className="w-[30%]" />
+                <img src="/form.png" className="w-[30%]" />
               </div>
             </div>
             <div className="w-[49%] bg-white h-full p-5 rounded-xl">
@@ -174,6 +178,20 @@ export default function Home() {
                   printer took a galley of type and scrambled it to make a type
                   specimen book.{" "}
                 </span>
+                <div className="flex pt-5 items-center z-30 text-[10px] justify-between w-full">
+                  <div className="flex flex-col space-y-1">
+                    <span>Bank Name:</span>
+                    <span>Bank Address:</span>
+                    <span>Account Name: </span>
+                    <span>IBAN: </span>
+                  </div>
+                  <div className="flex flex-col space-y-1">
+                    <span>Bank Of Canada</span>
+                    <span>Maple Lane, Syrup Street</span>
+                    <span>Houser Smiley</span>
+                    <span>1231231231</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
