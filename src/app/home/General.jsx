@@ -6,8 +6,19 @@ import {
   KeyboardArrowRightOutlined,
   SearchOutlined,
 } from "@mui/icons-material";
+import { useRecoilState } from "recoil";
+import { invoiceDetails } from "../atom";
 
 const General = ({ setShowProfile, showProfile }) => {
+  const [details, setDetails] = useRecoilState(invoiceDetails);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+  console.log("invoiceDetails", invoiceDetails.com);
   return (
     <div className="flex items-center w-full justify-evenly">
       <div className="w-1/2 m-3 p-8 bg-white min-h-[500px] rounded-2xl shadow-xl flex flex-col space-y-5">
@@ -18,7 +29,7 @@ const General = ({ setShowProfile, showProfile }) => {
           {!showProfile && (
             <span
               onClick={() => setShowProfile(true)}
-              className="p-2 transition-all bg-gray-100 rounded-full cursor-pointer hover:bg-gray-100 hover:scale-105"
+              className="p-2 transition-all bg-gray-200 rounded-full cursor-pointer animate-pulse hover:bg-gray-200 hover:scale-105"
             >
               <KeyboardArrowRightOutlined sx={{ fontSize: "16px" }} />
             </span>
@@ -91,44 +102,71 @@ const General = ({ setShowProfile, showProfile }) => {
           </div>
           <div className="flex text-[14px] justify-between flex-col w-full h-full mt-10 rounded-xl">
             <input
+              name="companyName"
+              value={details.companyName}
+              onChange={handleChange}
               placeholder="Company Name"
               className="p-3 px-5 bg-gray-100 rounded-full"
             />
             <input
+              name="companyId"
+              value={details.companyId}
+              onChange={handleChange}
               placeholder="Company ID"
               className="p-3 px-5 bg-gray-100 rounded-full"
             />
             <div className="flex items-center justify-between w-full">
               <input
+                name="email"
+                value={details.email}
+                onChange={handleChange}
                 placeholder="email@company.com"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
               <input
+                name="companyType"
+                value={details.companyType}
+                onChange={handleChange}
                 placeholder="Company Type"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
             </div>
             <div className="flex items-center justify-between w-full">
               <input
-                placeholder="Denmark"
+                name="country"
+                value={details.country}
+                onChange={handleChange}
+                placeholder="Country"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
               <input
-                placeholder="Copenhagen"
+                name="city"
+                value={details.city}
+                onChange={handleChange}
+                placeholder="City"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
             </div>
             <div className="flex items-center justify-between w-full">
               <input
+                name="streetAddress"
+                value={details.streetAddress}
+                onChange={handleChange}
                 placeholder="Street Address"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
               <input
+                name="postalCode"
+                value={details.postalCode}
+                onChange={handleChange}
                 placeholder="Postal Code"
                 className="p-3 px-5 bg-gray-100 rounded-full w-[49%]"
               />
             </div>
             <input
+              name="stateProvinceRegion"
+              value={details.stateProvinceRegion}
+              onChange={handleChange}
               placeholder="State / province / region"
               className="p-3 px-5 bg-gray-100 rounded-full"
             />
