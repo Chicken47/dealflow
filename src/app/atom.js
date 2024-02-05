@@ -14,3 +14,8 @@ export const invoiceDetails = atom({
     stateProvinceRegion: "",
   },
 });
+
+export const imagesArray = atom({
+  key: "imagesArray",
+  default: [],
+});

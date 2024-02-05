@@ -38,12 +38,13 @@ const General = ({ setShowProfile, showProfile }) => {
         <div
           className={`flex text-[15px] p-5 py-7 flex-col w-full ${
             showProfile ? "h-[250px]" : "h-[400px]"
-          } mt-12 bg-gray-100 rounded-xl `}
+          } mt-12 bg-gray-100 rounded-xl justify-between`}
         >
           <div className="flex items-center justify-between w-full">
             <span>Instant payout without confirmation</span>
             <span>1-7 days</span>
           </div>
+          <img src="/creditBar.png" className="scale-80" />
         </div>
         {showProfile && (
           <>
