@@ -1,13 +1,9 @@
 "use client";
-import {
-  Check,
-  Close,
-  KeyboardArrowRightOutlined,
-  QuestionMarkRounded,
-  RefreshOutlined,
-} from "@mui/icons-material";
-import { Radio } from "@mui/material";
+import { Close, KeyboardArrowRightOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
+import { invoices, withdrawList } from "./invoiceData";
+import AccountCheckModal from "./AccountCheckModal";
+import WithdrawModal from "./WithdrawModal";
 
 const Invoice = () => {
   const [withdrawStep, setWithdrawStep] = useState(1);
@@ -18,98 +14,12 @@ const Invoice = () => {
   const handleToggleItem = (itemId) => {
     setSelectedItems((prevSelectedItems) => {
       if (prevSelectedItems.includes(itemId)) {
-        // If item is already selected, remove it from the selected items array
         return prevSelectedItems.filter((item) => item !== itemId);
       } else {
-        // If item is not selected, add it to the selected items array
         return [...prevSelectedItems, itemId];
       }
     });
   };
-  const invoices = [
-    {
-      id: 1,
-      name: "Invoice 01",
-      company: "Company 1",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 2,
-      name: "Invoice 02",
-      company: "Company 2",
-      status: "Pending",
-      amount: "+ 25,100.00 €",
-      credit: false,
-    },
-    {
-      id: 3,
-      name: "Invoice 01",
-      company: "Company 1",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 4,
-      name: "Invoice 02",
-      company: "Company 2",
-      status: "Pending",
-      amount: "+ 25,100.00 €",
-      credit: false,
-    },
-  ];
-  const withdrawList = [
-    {
-      id: 1,
-      name: "Invoice 01",
-      company: "Company 1",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 2,
-      name: "Invoice 02",
-      company: "Company 2",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 3,
-      name: "Invoice 03",
-      company: "Company 3",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 4,
-      name: "Invoice 04",
-      company: "Company 4",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 5,
-      name: "Invoice 05",
-      company: "Company 5",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-    {
-      id: 6,
-      name: "Invoice 06",
-      company: "Company 6",
-      status: "Paid",
-      amount: "+ 35,257.66 €",
-      credit: true,
-    },
-  ];
 
   return (
     <div className="flex flex-col items-center w-full space-y-8 p-7">
@@ -244,88 +154,17 @@ const Invoice = () => {
               } top-[50%] left-[-16px]`}
             />
             {openModal && (
-              <div className="absolute z-50 flex items-center justify-center w-full h-full px-10 py-40 rounded-xl">
-                <div className="flex flex-col items-center justify-between w-full h-full p-5 bg-white rounded-xl">
-                  <div className="flex flex-col items-center w-full space-y-4">
-                    <span className="flex justify-end w-full">
-                      <span
-                        onClick={() => setOpenModal(false)}
-                        className="cursor-pointer"
-                      >
-                        <Close />
-                      </span>
-                    </span>
-                    <QuestionMarkRounded />
-                    <span className="text-[21px] font-bold">
-                      Is this the right account?
-                    </span>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setOpenModal(false);
-                      setWithdrawStep(4);
-                    }}
-                    className="w-full py-3 text-center cursor-pointer bg-gradient-to-l from-[#fac5c6] to-[#C655CE] text-white rounded-full"
-                  >
-                    Confirm
-                  </div>
-                </div>
-              </div>
+              <AccountCheckModal
+                setOpenModal={setOpenModal}
+                setWithdrawStep={setWithdrawStep}
+              />
             )}
             {withdrawModalOpen && (
-              <div className="absolute z-50 flex items-center justify-center w-full h-full px-10 py-40 rounded-xl">
-                {withdrawStep === 5 ? (
-                  <div className="flex flex-col items-center justify-between w-full p-5 space-y-10 bg-white rounded-xl">
-                    <div className="flex flex-col items-center w-full space-y-4">
-                      <span className="flex justify-end w-full">
-                        <span
-                          onClick={() => setWithdrawModalOpen(false)}
-                          className="cursor-pointer"
-                        >
-                          <Close />
-                        </span>
-                      </span>
-                      <span className="">
-                        <Check />
-                      </span>
-                      <span className="text-[21px] font-bold">Success!</span>
-                    </div>
-                    <div
-                      onClick={() => {
-                        setWithdrawStep(2);
-                      }}
-                      className="w-full py-3 text-center cursor-pointer bg-gradient-to-l from-[#fac5c6] to-[#C655CE] text-white rounded-full"
-                    >
-                      Finish
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-between w-full p-5 space-y-10 bg-white rounded-xl">
-                    <div className="flex flex-col items-center w-full space-y-4">
-                      <span className="flex justify-end w-full">
-                        <span
-                          onClick={() => setWithdrawModalOpen(false)}
-                          className="cursor-pointer"
-                        >
-                          <Close />
-                        </span>
-                      </span>
-                      <span className="animate-spin">
-                        <RefreshOutlined />
-                      </span>
-                      <span className="text-[21px] font-bold">Processing</span>
-                    </div>
-                    <div
-                      onClick={() => {
-                        setWithdrawStep(5);
-                      }}
-                      className="w-full py-3 text-center cursor-pointer bg-gradient-to-l from-[#fac5c6] to-[#C655CE] text-white rounded-full"
-                    >
-                      Finish
-                    </div>
-                  </div>
-                )}
-              </div>
+              <WithdrawModal
+                setWithdrawModalOpen={setWithdrawModalOpen}
+                setWithdrawStep={setWithdrawStep}
+                withdrawStep={withdrawStep}
+              />
             )}
             <div className="flex flex-col w-full p-10 space-y-4">
               <div className="flex items-center justify-between w-full">

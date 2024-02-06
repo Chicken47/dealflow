@@ -4,7 +4,7 @@ import { RecoilRoot } from "recoil";
 import Header from "./components/Header";
 import HomePage from "./home/HomePage";
 import { useState } from "react";
-import Invoice from "./home/Invoice";
+import Invoice from "./invoice/Invoice";
 
 export default function Home() {
   const [sidebarTab, setSidebarTab] = useState("dealflow");
