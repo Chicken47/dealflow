@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Dealflow Dashboard
 
-## Getting Started
+This repository contains the source code for the Dealflow dashboard, a React-Next.js project with Tailwind CSS. The dashboard is designed to provide users with various functionalities across four main sections: Profile Page, Design Studio, Withdrawal, and Notification.
 
-First, run the development server:
+### Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To run this project locally, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
+4. Run `npm run dev` to start the development server.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Sections
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### 1. Profile Page
 
-## Learn More
+The Profile Page features a circular progress bar on the left, with a Call-To-Action (CTA) section that expands the profile score part and hides the right section. The right side consists of input fields for user data, which will be utilized in later sections. Local state management is employed to handle the UI interactions.
 
-To learn more about Next.js, take a look at the following resources:
+#### 2. Design Studio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Design Studio allows users to customize their invoices. It comprises two sections:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Left Section**: Users can upload up to 5 avatars, adjust the color scheme using a bar, toggle the display of company and personal names, and navigate through different form templates via a carousel.
+- **Right Section**: Displays the template invoice, with the theme determined by the bar on the left. The invoice also features an avatar selected from the uploaded avatars. Global state management, utilizing Recoil, is utilized to maintain data consistency between this page and the Profile Page, including uploaded images.
 
-## Deploy on Vercel
+#### 3. Withdrawal
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The Withdrawal section enables users to withdraw cash through a multi-step process. State management, using a single integer state, simplifies the process and facilitates the progress bar's functionality. Custom modal components, implemented with two different states, enhance user experience without relying on external packages.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### 4. Notification
+
+The Notification section is designed to display toast or snackbar messages, providing users with relevant notifications based on their interactions within the dashboard.
+
+### Credits
+
+This project was completed as part of an assignment for Dealflow.
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to reach out if you have any questions or need further assistance!
